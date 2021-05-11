@@ -15,7 +15,7 @@
 
     <div class="columns" id="signup-app">
         <div class="column is-6 is-offset-3">
-            <form method="POST" action="." class="mt-6" v-on:submit="validateForm">
+            <form method="POST" action="." class="mt-6" v-on:submit="validateForm" novalidate>
                 {% csrf_token %}
 
                 {% if form.error %}
@@ -26,7 +26,99 @@
                             {% if field.errors %}{{ field.label }}: {{ field.errors|striptags }}{% endif %}
                         {% endfor %}
                     </div>
+                {% endif %}
+
+                <div class="notification is-danger" v-if="errors.length">
+                    <p v-for="error in errors">
+                        [[ error ]]  
+                    </p>
+                </div>
+                
+                <div class="field">
+                    <label>E-mail</label>
+
+                    <div class="control">
+                        <input type="email" name="username" id="id_username" class="input" v-model="username">
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <label>Password</label>
+
+                    <div class="control">
+                        <input type="password" name="password1" id="id_password1" class="input" v-model="password1">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Retype Password</label>
+
+                    <div class="control">
+                        <input type="password" name="password2" id="id_password2" class="input" v-model="password2">
+                    </div>
+                </div>
+                
+                <ul class="password-helt-text">
+                    <li v-if="password1.length < 8">Your password must contain at least 8 characters</li>
+                    <li v-if="!isNaN(password1)">Your password can't be entirely numeric</li>
+                </ul>
+
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-success">Sign Up</button>
+                    </div>
+                </div>
+            
             </form>
         </div>
     </div>
+
+<!-- VueJS -->
+
+{% endblock %}
+
+{% block script %}
+
+    <script type="text/javascript">
+        const signupApp = {
+            data(){
+                return {
+                    username: '',
+                    password1: '',
+                    password2: '',
+                    errors: []
+                }
+            },
+
+            delimiters: ['[[', ']]'],
+
+            methods: {
+                validateForm(e){
+                    this.errors = []
+
+                    if(!this.validateEmail(this.username)){
+                        this.errors.push('Your email address is not valid!')
+                    }
+
+                    if(this.errors.length){
+                        e.preventDefault()
+
+                        return false
+                    } else {
+                        return true 
+                    }
+                },
+
+                validateEmail(email) {
+                    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
+                      return true
+                    }
+                    return false
+                   }
+            }
+        }
+
+        Vue.createApp(signupApp).mount('#signup-app')
+    </script>
+
 {% endblock %}
