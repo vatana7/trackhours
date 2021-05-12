@@ -99,7 +99,22 @@
                     if(!this.validateEmail(this.username)){
                         this.errors.push('Your email address is not valid!')
                     }
+                    
+                    if(this.password1 === ''){
+                        this.errors.push("Your password is missing")
+                    }
 
+                    if(this.password1.length < 8){
+                        this.errors.push('Your password must be at least 8 characters')
+                    }
+
+                    if(!isNaN(this.password1)){
+                        this.errors.push('Your password can\'t be entirely numeric')
+                    }
+
+                    if(this.password1 !== this.password2){
+                        this.errors.push('Your password does not match!')
+                    }
                     if(this.errors.length){
                         e.preventDefault()
 
