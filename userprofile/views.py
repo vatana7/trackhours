@@ -1,6 +1,7 @@
 # Import modules
 
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -12,6 +13,10 @@ from .models import Userprofile
 
 #
 #Views
+
+@login_required
+def myaccount(request):
+    return render(request, 'userprofile/myaccount.html')
 
 def signup(request):
     if request.method == 'POST':
