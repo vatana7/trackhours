@@ -20,12 +20,12 @@
 
             <div class="navbar-menu">
                 <div class="navbar-end">
-                    <a href="{% url 'trackhours:plans' %}" class="navbar-item">Plans</a>
+                    <a href="{% url 'plans' %}" class="navbar-item">Plans</a>
 
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a href="{% url 'trackhours:signup' %}" class="button is-success"><strong>Sign Up</strong>
-                            <a href="#" class="button">Log In</a>
+                            <a href="{% url 'signup' %}" class="button is-success"><strong>Sign Up</strong>
+                            <a href="{% url 'login' %}" class="button">Log In</a>
                         </div>
                     </div>
                 </div>
@@ -50,8 +50,8 @@
                 <div class="column is-offset-6 is-2">
                     <ul>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="{% url 'trackhours:privacy' %}">Privacy Policy</a></li>
-                        <li><a href="{% url 'trackhours:terms' %}">Terms of Service</a></li>
+                        <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+                        <li><a href="{% url 'terms' %}">Terms of Service</a></li>
                     </ul>
                 </div>
 

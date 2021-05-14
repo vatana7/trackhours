@@ -26,7 +26,7 @@ def signup(request):
 
             login(request, user)
 
-            return redirect('trackhours:frontpage')
+            return redirect('frontpage')
     else:
         form = UserCreationForm()
 
