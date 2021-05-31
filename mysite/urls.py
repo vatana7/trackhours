@@ -18,7 +18,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib import admin
 
 from trackhours.views import privacy, terms, plans, frontpage
-from userprofile.views import signup, myaccount
+from userprofile.views import edit_profile, signup, myaccount
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +31,7 @@ urlpatterns = [
     # Auth
     path('signup/', signup, name='signup'),
     path('login/', auth_views.LoginView.as_view(template_name='userprofile/login.html'), name='login'),
-    path('myaccount/', myaccount, name="myaccount")
+    path('logout/', auth_views.LogoutView.as_view(template_name='trackhours/frontpage.html'), name='logout'),
+    path('myaccount/', myaccount, name="myaccount"),
+    path('myaccount/edit_profile', edit_profile, name="editprofile")
 ]
