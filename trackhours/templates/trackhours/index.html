@@ -20,12 +20,13 @@
 
             <div class="navbar-menu">
                 <div class="navbar-end">
+                    {% if not request.user.is_authenticated %}
                     <a href="{% url 'plans' %}" class="navbar-item">Plans</a>
-
+                    {% endif %}
                     <div class="navbar-item">
                         <div class="buttons">
                             {% if request.user.is_authenticated %}
-                                <a href="{% url 'myaccount' %}" class="button is-success">My Account</a>
+                                <a href="{% url 'myaccount' %}" class="button is-success">{% firstof request.user.get_full_name request.user.username %}</a>
                             {% else %}
                                 <a href="{% url 'signup' %}" class="button is-success"><strong>Sign Up</strong>
                                 <a href="{% url 'login' %}" class="button">Log In</a>
@@ -38,14 +39,15 @@
         <!--End Navbar-->
 
         <!-- Main -->
-        {% if message %}
-            {% for message in messsages %}
-                <div class="notification is-info">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
         <section class="section">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="notification is-info">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
             {% block content %}
-            {% endblock content %}
+            {% endblock %}
         </section>
         <!--End Main -->
 

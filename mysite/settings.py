@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'trackhours',
-    'userprofile'
+    'userprofile',
+    'teams'
 ]
 
 MIDDLEWARE = [
