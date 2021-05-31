@@ -21,8 +21,7 @@ SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('/home/prometheus/django/my_env/secret_key.txt') as f:
-    SECRET_KEY =  f.read().strip()
+SECRET_KEY = ')eazo!8_$)f@!psik+=(&e&k1@io8&63=5teia)knx!5(l513k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
