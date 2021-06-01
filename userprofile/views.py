@@ -11,9 +11,15 @@ from django.contrib.auth.forms import UserCreationForm
 # Import models
 
 from .models import Userprofile
-
+from teams.models import Team
 #
 #Views
+
+@login_required
+def myaccount(request):
+    teams = request.user.teams.exclude(pk=request.user.userprofile.active_team_id)
+
+    return render(request, 'userprofile/myaccount.html', {'teams': teams})
 
 @login_required
 def edit_profile(request):
@@ -28,10 +34,6 @@ def edit_profile(request):
         return redirect('myaccount')
     
     return render(request, 'userprofile/edit_profile.html')
-
-@login_required
-def myaccount(request):
-    return render(request, 'userprofile/myaccount.html')
 
 
 def signup(request):

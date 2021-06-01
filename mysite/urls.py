@@ -32,5 +32,6 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='trackhours/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='trackhours/frontpage.html'), name='logout'),
     path('myaccount/', include('userprofile.urls')),
+    path('myaccount/teams/', include('teams.urls')),
     
 ]
