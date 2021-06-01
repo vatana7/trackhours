@@ -49,7 +49,7 @@
 
                 <hr>
 
-                <a href="#" class="button is-success">Details</a>
+                <a href="{% url 'teams:team' active_team.id %}" class="button is-success">Details</a>
 
                 {% if active_team.created_by == request.user %}
                     <a href="#" class="button is-info">Invite User</a>
@@ -67,8 +67,8 @@
 
                     <hr>
 
-                    <a href="#" class="button is-success">Details</a>
-                    <a href="#" class="button is-info">Activate</a>
+                    <a href="{% url 'teams:team' team.id %}" class="button is-success">Details</a>
+                    <a href="{% url 'teams:activate_team' team.id %}" class="button is-info">Activate</a>
                 </div>
             </div>
         {% endfor %}
