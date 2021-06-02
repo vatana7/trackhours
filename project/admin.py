@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import Userprofile
+from .models import Project
 
 # Register your models here.
 
 
-admin.site.register(Userprofile)
+admin.site.register(Project)
