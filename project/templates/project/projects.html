@@ -1,6 +1,6 @@
 {% extends 'trackhours/index.html' %}
 
-{% block title %} Project | {% endblock %}
+{% block title %} Projects | {% endblock %}
 
 {% block content %}
 
@@ -33,7 +33,7 @@
 
                         <hr>
 
-                        <a href="#" class="button is-success">Detail</a>
+                        <a href="{% url 'project:project' project.id %}" class="button is-success">Detail</a>
                     </div>
                 </div>
             {% empty %}
