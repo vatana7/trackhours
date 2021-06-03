@@ -20,6 +20,31 @@
             </div>
         </div>
 
+        <div class="columns">
+            {% for project in projects %}
+                <div class="column is-3">
+                    <div class="notification">
+                        <h2 class="is-size-5">
+                            {{ project.title }}
+                        </h2>
+
+                        <p class="size-is-7">Registered time: {{ project.registered_time }}</p>
+                        <p class="size-is-7">Task: {{ project.num_tasks_todo }}</p>
+
+                        <hr>
+
+                        <a href="#" class="button is-success">Detail</a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="column is-3">
+                    <div class="notification">
+                        No project yet...
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
         <div class="modal" :class="{'is-active': showAddProjectModal}">
             <div class="modal-background"></div>
 
@@ -35,7 +60,7 @@
                         <div class="field">
                             <label>Title</label>
                             <div class="control">
-                                <input type="text" name="title" id="id_title" v-model="title">
+                                <input type="text" name="title" id="id_title" v-model="title" class="input">
                             </div>
                         </div>
 
@@ -46,7 +71,7 @@
 
                     <footer class="modal-card-foot">
                         <button class="button is-success">Submit</button>
-                        <button class="button is-success" @click="showAddProjectModal = !showAddProjectModal">Cancel</button>
+                        <button class="button is-success" @click="showAddProjectModal = !showAddProjectModal" >Cancel</button>
                     </footer>
                     
                 </div>

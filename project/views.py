@@ -3,9 +3,22 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from teams.models import Team
+from .models import Project
 # Create your views here.
 
 @login_required
 def projects(request):
-    
-    return render(request, 'project/projects.html')
+    team = get_object_or_404(Team, pk=request.user.userprofile.active_team_id, status=Team.ACTIVE)
+    projects = team.projects.all()
+
+    if request.method == 'POST':
+        title = request.POST.get('title')
+
+        if title:
+            project = Project.objects.create(team=team, title=title, created_by=request.user)
+
+            messages.info(request, 'The project was added!')
+
+            return redirect('project:projects')
+
+    return render(request, 'project/projects.html', {'team': team, 'projects': projects})

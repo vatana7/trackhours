@@ -45,14 +45,8 @@ def signup(request):
             user.email = user.username
             user.save()
 
-
-
-
             userprofile = Userprofile.objects.create(user=user)
-
-
-
-
+            
             login(request, user)
 
             return redirect('frontpage')

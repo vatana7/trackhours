@@ -26,15 +26,15 @@ urlpatterns = [
     path('privacy/', privacy, name='privacy'),
     path('terms/', terms, name='terms'),
     path('plans/', plans, name='plans'),
-    
+
     #Project
-    path('projects', include('project.urls')),
-    
+    path('projects/', include('project.urls')),
+
     # Auth
     path('signup/', signup, name='signup'),
     path('login/', auth_views.LoginView.as_view(template_name='trackhours/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='trackhours/frontpage.html'), name='logout'),
     path('myaccount/', include('userprofile.urls')),
     path('myaccount/teams/', include('teams.urls')),
-    
+ 
 ]
