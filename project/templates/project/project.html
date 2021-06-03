@@ -8,7 +8,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
                 <li><a href="#">Dashboard</a></li>
-                <li><a href="#" >Project</a></li>
+                <li><a href="{% url 'project:projects' %}" >Project</a></li>
                 <li class="is-active"><a href="#" aria-current="page">{{ project.title }}</a></li>
             </ul>
         </nav>
@@ -16,6 +16,8 @@
         <div class="columns" id="project-app">
             <div class="column is-4">
                 <h1 class="title">{{ project.title }}</h1>
+
+                <a href="{% url 'project:edit_project' project.id %}" class="button is-warning">Edit project</a>
             </div>
         </div>
     </div>
