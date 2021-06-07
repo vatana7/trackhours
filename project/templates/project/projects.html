@@ -24,12 +24,9 @@
             {% for project in projects %}
                 <div class="column is-3">
                     <div class="notification">
-                        <h2 class="is-size-5">
-                            {{ project.title }}
-                        </h2>
-
-                        <p class="size-is-7">Registered time: {{ project.registered_time }}</p>
-                        <p class="size-is-7">Task: {{ project.num_tasks_todo }}</p>
+                        <h2 class="is-size-5">{{ project.title }}</h2>
+                        <p class="is-size-7">Registered time: {{ project.registered_time }}</p>
+                        <p class="is-size-7">Tasks: {{ project.num_tasks_todo }}</p>
 
                         <hr>
 
